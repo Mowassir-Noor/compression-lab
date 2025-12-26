@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Compression Lab – File Compression Tool</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🗜️ Compression Lab</h1>
+      <p>Huffman • LZ77 • RLE</p>
+    </header>
+
+    <main>
+      <!-- Algorithm & Operation Selection -->
+      <section class="control-panel">
+        <div class="control-group">
+          <label for="algorithm">Algorithm:</label>
+          <select id="algorithm">
+            <option value="huffman" selected>Huffman (Optimal codes)</option>
+            <option value="lz77">LZ77 (Dictionary-based)</option>
+            <option value="rle">RLE (Run-length encoding)</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="operation">Operation:</label>
+          <select id="operation">
+            <option value="compress" selected>Compress</option>
+            <option value="decompress">Decompress</option>
+          </select>
+        </div>
+      </section>
+
+      <!-- File Upload -->
+      <section class="upload-section">
+        <div class="drop-zone" id="dropZone">
+          <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+          </svg>
+          <p class="drag-text">Drag & drop your file here</p>
+          <p class="or-text">or</p>
+          <label class="file-input-label">
+            Browse Files
+            <input type="file" id="fileInput" hidden>
+          </label>
+          <p class="file-info" id="fileName" style="display: none;"></p>
+        </div>
+      </section>
+
+      <!-- Action Button -->
+      <section class="action-section">
+        <button id="processBtn" class="btn btn-primary" disabled>
+          Process File
+        </button>
+        <p class="hint" id="hint"></p>
+      </section>
+
+      <!-- Results -->
+      <section class="results-section" id="resultsSection" style="display: none;">
+        <h2>✓ Processing Complete</h2>
+        <div class="stats-grid">
+          <div class="stat">
+            <span class="stat-label">Input Size</span>
+            <span class="stat-value" id="inputSize">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Output Size</span>
+            <span class="stat-value" id="outputSize">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Ratio</span>
+            <span class="stat-value" id="ratio">—</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Space Saved</span>
+            <span class="stat-value" id="saving">—</span>
+          </div>
+        </div>
+        <a id="downloadLink" class="btn btn-success" href="#" download>
+          📥 Download Result
+        </a>
+        <button id="resetBtn" class="btn btn-secondary">Process Another</button>
+      </section>
+
+      <!-- Loading State -->
+      <section id="loadingSection" style="display: none;">
+        <div class="spinner"></div>
+        <p>Processing your file...</p>
+      </section>
+    </main>
+
+    <footer>
+      <p>Compression Lab • Fast & Efficient File Compression</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
